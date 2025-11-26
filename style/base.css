@@ -1,0 +1,26 @@
+/* ------------------ 基本設定 ------------------ */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4edff;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+label {
+  font-weight: 600;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  margin-top: 4px;
+}
+  
