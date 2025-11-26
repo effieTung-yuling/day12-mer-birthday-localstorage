@@ -1,17 +1,13 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f4edff;
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-}
-
 .card {
   width: 650px;
+  max-width: 90%; /* ✔ RWD：卡片可縮放 */
   background: #ffffff;
   padding: 26px;
   border-radius: 18px;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+
+  position: relative; /* ✔ 狗狗以 card 為定位基準 */
+  overflow: visible !important;
 }
 
 .title-row {
@@ -48,20 +44,6 @@ body {
   gap: 20px;
 }
 
-label {
-  font-weight: 600;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #bbb;
-  margin-top: 4px;
-}
-
 .hint-text {
   font-size: 12px;
   color: #777;
@@ -75,7 +57,7 @@ input[type="number"] {
   margin-bottom: 20px;
 }
 .photo-preview-wrapper {
-  width: 130px;
+  width: 150px;
   height: 130px;
   border: 2px dashed #d5b8ff;
   border-radius: 12px;
@@ -95,7 +77,13 @@ input[type="number"] {
   object-fit: cover;
   display: none;
 }
-
+.photo-upload-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+}
 .photo-label {
   display: block;
   margin-bottom: 5px;
@@ -115,6 +103,10 @@ input[type="number"] {
   margin-top: 10px;
   position: relative;
   overflow: hidden;
+}
+
+.calc-btn:hover {
+  background: #6a42b8;
 }
 
 /* 魔法粒子 */
@@ -179,4 +171,73 @@ input[type="number"] {
 .d-flex {
   display: flex;
   justify-content: start;
+}
+.clear-btn {
+  background: #b28aff;
+  padding: 13px;
+  border-radius: 12px;
+  color: #eee1ff;
+  font-size: 17px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+  position: relative; /* 讓 dog-sticker 相對此按鈕定位 */
+}
+.clear-btn:hover {
+  background: #d9534f;
+}
+/* ------------------ 狗狗貼圖（核心） ------------------ */
+.dog-sticker {
+  position: absolute;
+
+  right: -40px; /* ✔ 貼在卡片右下外側 */
+  bottom: -10px;
+
+  width: 180px; /* ✔ 電腦版大小 */
+  pointer-events: none;
+  z-index: 10;
+
+  transition: all 0.25s ease;
+}
+
+/* ------------------ RWD：平板 ------------------ */
+@media (max-width: 768px) {
+  .dog-sticker {
+    width: 140px;
+    right: -20px;
+    bottom: -5px;
+  }
+}
+
+/* ------------------ RWD：手機 ------------------ */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+
+  .dog-sticker {
+    width: 110px; /* ✔ 手機自動縮小 */
+    right: -10px;
+    bottom: 0;
+  }
+
+  .form-row {
+    flex-direction: column; /* ✔ 兩欄變一欄 */
+    gap: 10px;
+  }
+
+  .photo-section {
+    flex-direction: column;
+  }
+
+  .title-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .photo-upload-wrapper {
+    width: 100%;
+  }
 }

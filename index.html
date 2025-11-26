@@ -1,99 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>妙麗歲數計算機</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style/base.css">
   <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
   <div class="card">
 
-  <!-- title -->
-  <div class="title-row">
-    <div>
-      <div class="title-main">
-        <span class="emoji">🐾</span>
-        <span>妙麗歲數計算機</span>
-      </div>
-      <div class="title-sub">霍格華茲獸醫學院 · 非官方加掛小測驗</div>
-    </div>
-    <div class="hogwarts-tag">今日占卜：你家毛孩是不是其實是教授轉世？🪄</div>
-  </div>
-
-  <!-- name -->
-  <div class="form-group">
-    <label for="dogName">狗狗名字</label>
-    <input id="dogName" type="text" placeholder="請輸入狗狗名字" value="燦燦" />
-  </div>
-
-  <!-- birthday + human age -->
-  <div class="form-row">
-    <div class="form-group">
-      <label for="birthDate">狗狗生日</label>
-      <div class="hint-text">（預設：2021-02-28，可自行修改）</div>
-      <input id="birthDate" type="date" value="2021-02-28" />
-    </div>
-
-    <div class="form-group">
-      <label for="humanAge">你的年齡（選填）</label>
-      <div class="hint-text">用來比較誰比較「老靈魂」👀</div>
-      <input id="humanAge" type="number" min="0" step="1" placeholder="例如：25" style='margin-left:4px' />
-    </div>
-  </div>
-
-  <!-- photo upload -->
-  <div class="photo-section">
-    <div class="photo-preview-wrapper">
-      <img id="photoPreview" class="photo-preview" />
-      <span id="photoPlaceholder">可上傳燦燦照片<br>讓卡片更可愛 💛</span>
-    </div>
-
-    <div>
-      <label class="photo-label" for="photoInput">上傳狗狗照片（選填）</label>
-      <input id="photoInput" type="file" accept="image/*" />
-      <div class="hint-text">照片僅在本頁顯示，不會上傳到任何地方。</div>
-    </div>
-  </div>
-
-  <!-- button -->
-  <button id="calcBtn" class="calc-btn">
-    <span>✨ 施放「年齡揭示」咒</span>
-  </button>
-
-  <!-- result -->
-  <div id="result" class="result" style="display:none;">
-    <div class="result-header">
-      <div class="result-title">
-        <span>📜</span>
-        <span id="resultTitleText"></span>
-      </div>
-    </div>
-
-    <div class="d-flex">
-      <!-- 計算後顯示照片 -->
-      <div id="resultPhotoWrapper" style="display:none; text-align:center; margin-right:15px;">
-        <img id="resultPhoto" style="max-width:120px; border-radius:12px;" />
-      </div>
-
+    <!-- title -->
+    <div class="title-row">
       <div>
-        <div id="resultContent"></div>
-        <div id="compareText" class="compare-text"></div>
-        <div id="birthdayBanner"></div>
-        <div id="errorText" class="error-text" style="display:none;"></div>
+        <div class="title-main">
+          <span class="emoji">🐾</span>
+          <span>妙麗歲數計算機</span>
+        </div>
+        <div class="title-sub">霍格華茲獸醫學院 · 非官方加掛小測驗</div>
+      </div>
+      <div class="hogwarts-tag">今日占卜：你家毛孩是不是其實是教授轉世？🪄</div>
+    </div>
+
+    <!-- name -->
+    <div class="form-group">
+      <label for="dogName">狗狗名字</label>
+      <input id="dogName" type="text" placeholder="請輸入狗狗名字" value="妙麗" />
+    </div>
+
+    <!-- birthday + human age -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="birthDate">狗狗生日</label>
+        <div class="hint-text">（預設：2021-02-28，可自行修改）</div>
+        <input id="birthDate" type="date" value="2021-02-28" />
+      </div>
+
+      <div class="form-group">
+        <label for="humanAge">你的年齡（選填）</label>
+        <div class="hint-text">用來比較誰比較「老靈魂」👀</div>
+        <input id="humanAge" type="number" min="0" step="1" placeholder="例如：25" style='margin-left:4px' />
       </div>
     </div>
-  </div>
 
-  <div class="footer-note">
-    小提示：狗齡換算公式採「
-    <a href="https://www.bbc.com/ukchina/trad/52883153">BBC 換算</a>
-    」—— 1歲：≈ 31 + 16×ln(1) = 31 歲。
-  </div>
+    <!-- photo upload -->
+    <div class="photo-section">
+      <div class="photo-preview-wrapper">
+        <img id="photoPreview" class="photo-preview" />
+        <span id="photoPlaceholder">可上傳妙麗照片<br>讓卡片更可愛 💛</span>
+      </div>
 
-</div>
+      <div class="photo-upload-wrapper">
+        <div>
+          <label class="photo-label" for="photoInput">上傳狗狗照片（選填）</label>
+          <input id="photoInput" type="file" accept="image/*" />
+          <div class="hint-text">照片僅在本頁顯示，不會上傳到任何地方。</div>
+        </div>
+        <!-- 錯誤提醒 -->
+        <input type="text" id="fileSizeError" disabled style="width: 100%;height: auto; display:none;color: white;background: rgb(210, 79, 79);">
+      </div>
+
+    </div>
+
+    <!-- button -->
+    <button id="calcBtn" class="calc-btn">
+      <span>✨ 施放「年齡揭示」咒</span>
+    </button>
+    <!-- button -->
+    <button id="clearBtn" class="clear-btn">
+      <span>♻️ 清除記錄</span>
+    </button>
+    <img src="img/unsplash_dog.png" class="dog-sticker" alt="dog">
+
+    <!-- result -->
+    <div id="result" class="result" style="display:none;">
+      <div class="result-header">
+        <div class="result-title">
+          <span id="resultTitleText"></span>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <!-- 計算後顯示照片 -->
+        <div id="resultPhotoWrapper" style="display:none; text-align:center; margin-right:15px;">
+          <img id="resultPhoto" style="max-width:120px; border-radius:12px;" />
+        </div>
+
+        <div>
+          <div id="resultContent"></div>
+          <div id="compareText" class="compare-text"></div>
+          <div id="birthdayBanner"></div>
+          <div id="errorText" class="error-text" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      小提示：狗齡換算公式採「
+      <a href="https://www.bbc.com/ukchina/trad/52883153">BBC 換算</a>
+      」—— 1歲：≈ 31 + 16×ln(1) = 31 歲。
+    </div>
+
+  </div>
 
   <!-- JS 正確引用（建議放在 body 結尾） -->
   <script src="js/index.js"></script>
 </body>
+
 </html>
